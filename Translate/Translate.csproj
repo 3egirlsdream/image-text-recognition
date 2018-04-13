@@ -158,6 +158,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="开发日志.txt" />
     <Resource Include="img\logo.ico" />
     <Resource Include="img\camera.png" />
     <Resource Include="logo.ico" />
