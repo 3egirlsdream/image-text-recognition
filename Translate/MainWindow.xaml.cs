@@ -20,7 +20,7 @@ namespace Translate
         public MainWindow()
         {
             InitializeComponent();
-            if (tb1.Text.Equals(""))
+            if (tb1.Text.Equals(""))//文本框内容为空时，翻译按钮设为不可用
             {
                 btn2.IsEnabled = false;
             }
@@ -77,7 +77,7 @@ namespace Translate
                 //MessageBox.Show(pathname);
             }
 
-            if (pathname != null)
+            if (pathname != null)//文件的绝对路径不为空时
                 {
                     System.Drawing.Image img = System.Drawing.Image.FromFile(pathname);
                     Bitmap p = (Bitmap)img;
