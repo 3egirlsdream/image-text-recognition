@@ -9,6 +9,5 @@
                 <ResourceDictionary Source="UserDefinedStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-
     </Application.Resources>
 </Application>

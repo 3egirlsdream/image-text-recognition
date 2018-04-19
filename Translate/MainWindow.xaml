@@ -7,23 +7,28 @@
         mc:Ignorable="d"
         MouseLeftButtonDown="Window_MouseLeftButtonDown"
         Loaded="Window_Loaded"
+        MouseDoubleClick="Window_MouseDoubleClick"
         Background="{x:Null}" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True"  BorderThickness="30" FontFamily=".PingFang SC,Microsoft YaHei UI"
         Title="MainWindow" Height="450" Width="800">
     <Window.Effect>
         <DropShadowEffect ShadowDepth="0" BlurRadius="30" Opacity="0.4"/>
     </Window.Effect>
     <Grid x:Name="grid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="120"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="20*"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="21*"/>
         </Grid.RowDefinitions>
 
-        <Border Background="White" Opacity="1" CornerRadius="5" Grid.RowSpan="3"/>
-        <Border CornerRadius="5" BorderThickness="1" BorderBrush="#D0CECE" Background="White" Grid.Row="0" Margin="30">
+        <Border Name="border1" Background="White" Opacity="1" CornerRadius="5" Grid.RowSpan="3" ToolTip="White" Grid.ColumnSpan="2"/>
+        <Border CornerRadius="5" BorderThickness="1" BorderBrush="#D0CECE" Grid.Row="0" Margin="30" Grid.ColumnSpan="2">
             <TextBox Name="tb1" BorderThickness="0" Background="Transparent"/>
         </Border>
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="115*"/>
                 <ColumnDefinition Width="300"/>
@@ -36,7 +41,7 @@
             </Border>
 
         </Grid>
-        <Border CornerRadius="5" BorderThickness="1" BorderBrush="#D0CECE" Background="White" Grid.Row="2" Margin="30">
+        <Border CornerRadius="5" BorderThickness="1" BorderBrush="#D0CECE" Grid.Row="2" Margin="30" Grid.ColumnSpan="2">
             <RichTextBox Name="tb2" BorderThickness="0" Background="Transparent">
                 <RichTextBox.Document>
                     <FlowDocument Focusable="True" LineHeight="1"></FlowDocument>
@@ -47,5 +52,10 @@
         <Border x:Name="MINN" ToolTip="最小化" HorizontalAlignment="Left" Margin="40,10,0,0" Width="13" Height="13" Background="#FFEFC000" CornerRadius="13" MouseDown="MINN_MouseDown" VerticalAlignment="Top"/>
         <Border x:Name="MAXX" ToolTip="最大化" HorizontalAlignment="Left" Margin="60,10,0,0" Width="13" Height="13" Background="#FF00D00F" CornerRadius="13" VerticalAlignment="Top"/>
 
+        <Border x:Name="SKIN" ToolTip="皮肤"   HorizontalAlignment="Right" Margin="0,10,10,0" Width="17" Height="17" VerticalAlignment="Top" MouseDown="SKIN_MouseDown" Grid.Column="1">
+            <Image Source="./img/skin.png"/>
+        </Border>
+
+        <ContentControl Name="cc" Grid.Column="1" Grid.Row="0" Margin="0,30, 0, 0" Grid.ColumnSpan="2"/>
     </Grid>
 </Window>

@@ -7,7 +7,9 @@ using System.Net;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using Tesseract;
 
 namespace Translate
@@ -20,6 +22,11 @@ namespace Translate
         public MainWindow()
         {
             InitializeComponent();
+            Skin skin = new Skin();
+            cc.Content = new Frame() { Content = skin };
+            //绑定Page的父窗口
+            skin.ParentWindow = this;
+            cc.Visibility = Visibility.Collapsed;
             if (tb1.Text.Equals(""))//文本框内容为空时，翻译按钮设为不可用
             {
                 btn2.IsEnabled = false;
@@ -192,6 +199,28 @@ namespace Translate
                 this.Close();
             }
             */
+        }
+
+        public void Window_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            string tootip = border1.ToolTip.ToString();
+            if (tootip == "White")
+            {
+                border1.Background = new SolidColorBrush(System.Windows.Media.Color.FromRgb(45, 45, 48));
+                border1.ToolTip = "Black";
+            }
+                
+            else if(tootip == "Black")
+            {
+                border1.Background = new SolidColorBrush(System.Windows.Media.Color.FromRgb(255, 255, 255));
+                border1.ToolTip = "White";
+            }
+        }
+
+        private void SKIN_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            
+            cc.Visibility = cc.Visibility == Visibility.Collapsed ? Visibility.Visible : Visibility.Collapsed;
         }
     }
 }
