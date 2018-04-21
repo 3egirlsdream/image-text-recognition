@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -16,6 +17,7 @@ namespace Translate
         public Camera()
         {
             InitializeComponent();
+            bd.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(ConfigurationManager.AppSettings["Skin.Color.Default"]));
         }
 
        

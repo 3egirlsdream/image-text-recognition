@@ -68,9 +68,9 @@
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Downloads\Json110r2\Bin\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>dll\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -92,8 +92,9 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="WPFMediaKit">
-      <HintPath>..\..\..\..\Downloads\Face-master\Face\Dll\WPFMediaKit.dll</HintPath>
+    <Reference Include="WPFMediaKit, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\WPFMediaKit.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -163,7 +164,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Translate_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -174,6 +174,8 @@
     <Resource Include="img\camera.png" />
     <Resource Include="logo.ico" />
     <Resource Include="img\skin.png" />
+    <Content Include="dll\Newtonsoft.Json.dll" />
+    <Content Include="dll\WPFMediaKit.dll" />
     <Content Include="x64\liblept1742.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
