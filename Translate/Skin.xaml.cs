@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,7 +21,6 @@ namespace Translate
     /// </summary>
     public partial class Skin : Page
     {
-        public string color;
         public Skin()
         {
             InitializeComponent();
@@ -39,33 +39,42 @@ namespace Translate
             }
         }
 
-        private SolidColorBrush GetRgb(byte r, byte g, byte b)
+        private SolidColorBrush GetColor(string str)
         {
-            return new SolidColorBrush(System.Windows.Media.Color.FromRgb(r, g, b));
+            return new SolidColorBrush((Color)ColorConverter.ConvertFromString(str)); ;
+        }
+        //修改配置文件，使得默认主题为当前选中的主题
+        private void ChangeDefaultColor(string str)
+        {
+            System.Configuration.Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            config.AppSettings.Settings["Skin.Color.Default"].Value = str;
+            config.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection("appSettings");
         }
 
+        //加载配置文件，并修改默认默认启动主题
         private void RgbBlack_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            //string tootip = this.parentWindow.border1.ToolTip.ToString();
-            this.parentWindow.border1.Background = GetRgb(45, 45, 48);
-            color = "#2D2D30";
+            this.parentWindow.border1.Background = GetColor(ConfigurationManager.AppSettings["Skin.Color.Black"]);
+            ChangeDefaultColor(ConfigurationManager.AppSettings["Skin.Color.Black"]);
         }
 
         private void RgbRed_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            //string tootip = this.parentWindow.border1.ToolTip.ToString();
-            this.parentWindow.border1.Background = GetRgb(198, 47, 47);
-            color = "#C62F2F";
+            this.parentWindow.border1.Background = GetColor(ConfigurationManager.AppSettings["Skin.Color.Red"]);
+            ChangeDefaultColor(ConfigurationManager.AppSettings["Skin.Color.Red"]);
         }
 
         private void RgbWhite_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            this.parentWindow.border1.Background = GetRgb(255, 255, 255);
+            this.parentWindow.border1.Background = GetColor(ConfigurationManager.AppSettings["Skin.Color.White"]);
+            ChangeDefaultColor(ConfigurationManager.AppSettings["Skin.Color.White"]);
         }
 
         private void RgbBlue_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            this.parentWindow.border1.Background = GetRgb(58, 93, 217);
+            this.parentWindow.border1.Background = GetColor(ConfigurationManager.AppSettings["Skin.Color.Blue"]);
+            ChangeDefaultColor(ConfigurationManager.AppSettings["Skin.Color.Blue"]);
         }
     }
 }

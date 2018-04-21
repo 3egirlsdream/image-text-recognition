@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Configuration;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -22,10 +23,12 @@ namespace Translate
         public MainWindow()
         {
             InitializeComponent();
+            //主题从默认配置文件加载
+            border1.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(ConfigurationManager.AppSettings["Skin.Color.Default"]));
+
             Skin skin = new Skin();
             cc.Content = new Frame() { Content = skin };
-            //绑定Page的父窗口
-            skin.ParentWindow = this;
+            skin.ParentWindow = this;//绑定Page的父窗口
             cc.Visibility = Visibility.Collapsed;
             if (tb1.Text.Equals(""))//文本框内容为空时，翻译按钮设为不可用
             {
@@ -47,7 +50,7 @@ namespace Translate
         }
 
         string pathname = null;
-        public void StartOrc(string imageSource = null)
+        private void StartOrc(string imageSource = null)
         {
             TesseractEngine engine = new TesseractEngine(@"C:\Program Files (x86)\Tesseract-OCR\tessdata\", "chi_sim", EngineMode.Default);
                 engine.SetVariable("chop_enable ", "F");
@@ -101,7 +104,7 @@ namespace Translate
            
         }
 
-        public string GetJson()
+        private string GetJson()
         {
             string str = tb1.Text;
             string appKey = "2b92f227a3de2456";

@@ -14,17 +14,13 @@
         <DropShadowEffect ShadowDepth="0" BlurRadius="30" Opacity="0.4"/>
     </Window.Effect>
     <Grid x:Name="grid">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="120"/>
-        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="20*"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="21*"/>
         </Grid.RowDefinitions>
 
-        <Border Name="border1" Background="White" Opacity="1" CornerRadius="5" Grid.RowSpan="3" ToolTip="White" Grid.ColumnSpan="2"/>
+        <Border Name="border1" Opacity="1" CornerRadius="5" Grid.RowSpan="3" ToolTip="White" Grid.ColumnSpan="2"/>
         <Border CornerRadius="5" BorderThickness="1" BorderBrush="#D0CECE" Grid.Row="0" Margin="30" Grid.ColumnSpan="2">
             <TextBox Name="tb1" BorderThickness="0" Background="Transparent"/>
         </Border>
@@ -55,7 +51,13 @@
         <Border x:Name="SKIN" ToolTip="皮肤"   HorizontalAlignment="Right" Margin="0,10,10,0" Width="17" Height="17" VerticalAlignment="Top" MouseDown="SKIN_MouseDown" Grid.Column="1">
             <Image Source="./img/skin.png"/>
         </Border>
-
-        <ContentControl Name="cc" Grid.Column="1" Grid.Row="0" Margin="0,30, 0, 0" Grid.ColumnSpan="2"/>
+        <Grid Grid.Column="0" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="120"/>
+            </Grid.ColumnDefinitions>
+            <ContentControl Name="cc" Grid.Column="1" Grid.Row="0" Margin="0,30,0,0"/>
+        </Grid>
+        
     </Grid>
 </Window>
