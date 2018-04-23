@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:Translate"
       mc:Ignorable="d" 
       d:DesignHeight="156" d:DesignWidth="120"
+      MouseLeave="Page_MouseLeave"
        Background="{x:Null}" FontFamily=".PingFang SC,Microsoft YaHei UI"
       Title="Skin">
     <Page.Effect>
@@ -22,13 +23,13 @@
             <RowDefinition Height="40"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Border Name="border" Background="White" Opacity="1" Grid.RowSpan="4" Grid.ColumnSpan="2"/>
+        <Border Name="border" Opacity="1" Grid.RowSpan="4" Grid.ColumnSpan="2"/>
         <TextBlock Text="主题" FontFamily="幼圆" FontSize="13" VerticalAlignment="Center" Margin="5,3,0,2" Grid.ColumnSpan="2"/>
         <Line X1="10" Y1="20" X2="110" Y2="20" Stroke="Gray" Opacity="0.6" Grid.ColumnSpan="2"/>
-        <Border Name="RgbBlack" Grid.Column="0" Grid.Row="1" Width="30" Height="30" Background="#2D2D30"  MouseDown="RgbBlack_MouseDown" ToolTip="Black" Margin="15,5"/>
-        <Border Name="RgbRed" Grid.Column="1" Grid.Row="1" Width="30" Height="30" Background="#C62F2F"  MouseDown="RgbRed_MouseDown" ToolTip="Red" Margin="15,5"/>
+        <Border Name="RgbBlack" Grid.Column="0" Grid.Row="1" Width="30" Height="30" Background="#2D2D30"  MouseDown="RgbBlack_MouseDown" ToolTip="Black" BorderThickness="1" BorderBrush="White" Margin="15,5"/>
+        <Border Name="RgbRed" Grid.Column="1" Grid.Row="1" Width="30" Height="30" Background="#C62F2F"  MouseDown="RgbRed_MouseDown" ToolTip="Red" BorderThickness="1" BorderBrush="White" Margin="15,5"/>
         <Border Name="RgbWhite" Grid.Column="0" Grid.Row="2" Width="30" Height="30" Background="White"  MouseDown="RgbWhite_MouseDown" BorderThickness="1" BorderBrush="Gray" ToolTip="White" Margin="15,5"/>
-        <Border Name="RgbBlue" Grid.Column="1" Grid.Row="2" Width="30" Height="30" Background="#3A5DD9"  MouseDown="RgbBlue_MouseDown" ToolTip="Blue" Margin="15,5"/>
+        <Border Name="RgbBlue" Grid.Column="1" Grid.Row="2" Width="30" Height="30" Background="#3A5DD9"  MouseDown="RgbBlue_MouseDown" ToolTip="Blue" BorderThickness="1" BorderBrush="White" Margin="15,5"/>
 
     </Grid>
 </Page>

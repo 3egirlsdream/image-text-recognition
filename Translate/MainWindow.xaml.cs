@@ -20,13 +20,13 @@ namespace Translate
     /// </summary>
     public partial class MainWindow : Window
     {
+        Skin skin = new Skin();//全局申明，方便SKIN_MouseDown()每次点击加载配置文件
         public MainWindow()
         {
             InitializeComponent();
             //主题从默认配置文件加载
             border1.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(ConfigurationManager.AppSettings["Skin.Color.Default"]));
 
-            Skin skin = new Skin();
             cc.Content = new Frame() { Content = skin };
             skin.ParentWindow = this;//绑定Page的父窗口
             cc.Visibility = Visibility.Collapsed;
@@ -222,8 +222,9 @@ namespace Translate
 
         private void SKIN_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            
+            skin.border.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(ConfigurationManager.AppSettings["Skin.Color.Default"]));
             cc.Visibility = cc.Visibility == Visibility.Collapsed ? Visibility.Visible : Visibility.Collapsed;
         }
+        
     }
 }

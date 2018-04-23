@@ -76,5 +76,10 @@ namespace Translate
             this.parentWindow.border1.Background = GetColor(ConfigurationManager.AppSettings["Skin.Color.Blue"]);
             ChangeDefaultColor(ConfigurationManager.AppSettings["Skin.Color.Blue"]);
         }
+
+        private void Page_MouseLeave(object sender, MouseEventArgs e)
+        {
+            this.parentWindow.cc.Visibility = Visibility.Collapsed;
+        }
     }
 }
