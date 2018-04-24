@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:local="clr-namespace:Translate"
         mc:Ignorable="d"
         MouseLeftButtonDown="Window_MouseLeftButtonDown"
@@ -37,13 +38,25 @@
             </Border>
 
         </Grid>
-        <Border CornerRadius="5" BorderThickness="1" BorderBrush="#D0CECE" Grid.Row="2" Margin="30" Grid.ColumnSpan="2">
+        <TabControl Grid.Row="2" Name="tc">
+            <TabItem Header="英文">
+                <Border CornerRadius="5" BorderThickness="1" BorderBrush="#D0CECE" Grid.Row="2" Margin="20" Grid.ColumnSpan="2">
+                    <RichTextBox Name="tb2" BorderThickness="0" Background="Transparent">
+                        <RichTextBox.Document>
+                            <FlowDocument Focusable="True" LineHeight="1"></FlowDocument>
+                        </RichTextBox.Document>
+                    </RichTextBox>
+                </Border>
+            </TabItem>
+            <TabItem Header="法语"></TabItem>
+        </TabControl>
+        <!--<Border CornerRadius="5" BorderThickness="1" BorderBrush="#D0CECE" Grid.Row="2" Margin="30" Grid.ColumnSpan="2">
             <RichTextBox Name="tb2" BorderThickness="0" Background="Transparent">
                 <RichTextBox.Document>
                     <FlowDocument Focusable="True" LineHeight="1"></FlowDocument>
                 </RichTextBox.Document>
             </RichTextBox>
-        </Border>
+        </Border>-->
         <Border x:Name="CLOSE" ToolTip="关闭" HorizontalAlignment="Left" Margin="20,10,0,0" Width="13" Height="13" Background="#FFB8B8B8" CornerRadius="13" MouseDown="CLOSE_MouseDown" VerticalAlignment="Top"/>
         <Border x:Name="MINN" ToolTip="最小化" HorizontalAlignment="Left" Margin="40,10,0,0" Width="13" Height="13" Background="#FFEFC000" CornerRadius="13" MouseDown="MINN_MouseDown" VerticalAlignment="Top"/>
         <Border x:Name="MAXX" ToolTip="最大化" HorizontalAlignment="Left" Margin="60,10,0,0" Width="13" Height="13" Background="#FF00D00F" CornerRadius="13" VerticalAlignment="Top"/>

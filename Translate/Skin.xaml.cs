@@ -56,24 +56,28 @@ namespace Translate
         private void RgbBlack_MouseDown(object sender, MouseButtonEventArgs e)
         {
             this.parentWindow.border1.Background = GetColor(ConfigurationManager.AppSettings["Skin.Color.Black"]);
+            this.parentWindow.tc.Background = GetColor(ConfigurationManager.AppSettings["Skin.Color.Black"]);
             ChangeDefaultColor(ConfigurationManager.AppSettings["Skin.Color.Black"]);
         }
 
         private void RgbRed_MouseDown(object sender, MouseButtonEventArgs e)
         {
             this.parentWindow.border1.Background = GetColor(ConfigurationManager.AppSettings["Skin.Color.Red"]);
+            this.parentWindow.tc.Background = GetColor(ConfigurationManager.AppSettings["Skin.Color.Red"]);
             ChangeDefaultColor(ConfigurationManager.AppSettings["Skin.Color.Red"]);
         }
 
         private void RgbWhite_MouseDown(object sender, MouseButtonEventArgs e)
         {
             this.parentWindow.border1.Background = GetColor(ConfigurationManager.AppSettings["Skin.Color.White"]);
+            this.parentWindow.tc.Background = GetColor(ConfigurationManager.AppSettings["Skin.Color.White"]);
             ChangeDefaultColor(ConfigurationManager.AppSettings["Skin.Color.White"]);
         }
 
         private void RgbBlue_MouseDown(object sender, MouseButtonEventArgs e)
         {
             this.parentWindow.border1.Background = GetColor(ConfigurationManager.AppSettings["Skin.Color.Blue"]);
+            this.parentWindow.tc.Background = GetColor(ConfigurationManager.AppSettings["Skin.Color.Blue"]);
             ChangeDefaultColor(ConfigurationManager.AppSettings["Skin.Color.Blue"]);
         }
 

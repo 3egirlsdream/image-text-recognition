@@ -26,6 +26,7 @@ namespace Translate
             InitializeComponent();
             //主题从默认配置文件加载
             border1.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(ConfigurationManager.AppSettings["Skin.Color.Default"]));
+            tc.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(ConfigurationManager.AppSettings["Skin.Color.Default"]));
 
             cc.Content = new Frame() { Content = skin };
             skin.ParentWindow = this;//绑定Page的父窗口
@@ -180,8 +181,10 @@ namespace Translate
 
         private void btn3_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            this.Visibility = Visibility.Collapsed;
             Camera camera = new Camera();
             camera.ShowDialog();
+            this.Visibility = Visibility.Visible;
             if(camera.isHasCamera) StartOrc("1");
         }
 
