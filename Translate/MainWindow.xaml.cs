@@ -13,8 +13,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using Tesseract;
 
+
 namespace Translate
-{
+{ 
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
     /// </summary>
@@ -26,10 +27,10 @@ namespace Translate
             InitializeComponent();
             //主题从默认配置文件加载
             border1.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(ConfigurationManager.AppSettings["Skin.Color.Default"]));
-            tc.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(ConfigurationManager.AppSettings["Skin.Color.Default"]));
 
             cc.Content = new Frame() { Content = skin };
             skin.ParentWindow = this;//绑定Page的父窗口
+
             cc.Visibility = Visibility.Collapsed;
             if (tb1.Text.Equals(""))//文本框内容为空时，翻译按钮设为不可用
             {
@@ -105,12 +106,12 @@ namespace Translate
            
         }
 
-        private string GetJson()
+        private string GetJson(string language)
         {
             string str = tb1.Text;
             string appKey = "2b92f227a3de2456";
             string from = "zh-CHS";
-            string to = "EN";
+            string to = language;
             string salt = DateTime.Now.Millisecond.ToString();
             string appSecret = "KdBgDXh1dzBKkREknjwVcTxE0vxiNxuP";
             MD5 md5 = new MD5CryptoServiceProvider();
@@ -132,7 +133,6 @@ namespace Translate
             return reader.ReadToEnd();
         }
 
-
         private void btn1_Click(object sender, RoutedEventArgs e)
         {
             StartOrc();
@@ -141,14 +141,10 @@ namespace Translate
         private void btn2_Click(object sender, RoutedEventArgs e)
         {
 
-            string result = GetJson();
-            Root rt = JsonConvert.DeserializeObject<Root>(result);//解析JSON数据
-
-            for(int i = 0; i < rt.translation.Count(); i++)
-            {
-                tb2.AppendText(rt.translation[i] + "\n");
-            }
-
+            GetEnglish();
+            GetFrench();
+            GetJapanese();
+            GetKorean();
             //string str = "";
             //bool flag = false;
             //for (int i = 0; i < result.Count(); i++)
@@ -228,6 +224,54 @@ namespace Translate
             skin.border.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(ConfigurationManager.AppSettings["Skin.Color.Default"]));
             cc.Visibility = cc.Visibility == Visibility.Collapsed ? Visibility.Visible : Visibility.Collapsed;
         }
-        
+
+        //多语言翻译
+        private void GetEnglish()
+        {
+            string result = GetJson("EN");
+            Root rt = JsonConvert.DeserializeObject<Root>(result);//解析JSON数据
+            this.tb2.Document.Blocks.Clear();//清空文本框
+            for (int i = 0; i < rt.translation.Count(); i++)
+            {
+                tb2.AppendText(rt.translation[i] + "\n");
+            }
+        }
+        private void GetFrench()
+        {
+            string result = GetJson("fr");
+            Root rt = JsonConvert.DeserializeObject<Root>(result);//解析JSON数据
+            this.TbFrench.Document.Blocks.Clear();
+            for (int i = 0; i < rt.translation.Count(); i++)
+            {
+                TbFrench.AppendText(rt.translation[i] + "\n");
+            }
+        }
+        private void GetJapanese()
+        {
+            string result = GetJson("ja");
+            Root rt = JsonConvert.DeserializeObject<Root>(result);//解析JSON数据
+            this.TbJapanese.Document.Blocks.Clear();//清空文本框
+            for (int i = 0; i < rt.translation.Count(); i++)
+            {
+                TbJapanese.AppendText(rt.translation[i] + "\n");
+            }
+        }
+        private void GetKorean()
+        {
+            string result = GetJson("ko");
+            Root rt = JsonConvert.DeserializeObject<Root>(result);//解析JSON数据
+            this.TbKorean.Document.Blocks.Clear();//清空文本框
+            for (int i = 0; i < rt.translation.Count(); i++)
+            {
+                TbKorean.AppendText(rt.translation[i] + "\n");
+            }
+        }
+
+        private void setting_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Setting setting = new Setting();
+            setting.ParentWindow = this;
+            setting.ShowDialog();
+        }
     }
 }

@@ -111,6 +111,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ComboBox.cs" />
+    <Compile Include="Setting.xaml.cs">
+      <DependentUpon>Setting.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Skin.xaml.cs">
       <DependentUpon>Skin.xaml</DependentUpon>
     </Compile>
@@ -137,6 +141,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Setting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Skin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -185,6 +193,7 @@
     <Resource Include="img\skin.png" />
     <Content Include="dll\Newtonsoft.Json.dll" />
     <Content Include="dll\WPFMediaKit.dll" />
+    <Resource Include="img\setting.png" />
     <Content Include="x64\liblept1742.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
