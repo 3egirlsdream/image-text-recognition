@@ -20,7 +20,7 @@ namespace Translate
     /// </summary>
     public partial class Setting : Window
     {
-        public Setting()
+        public Setting(string str)
         {
             InitializeComponent();
             bd.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(ConfigurationManager.AppSettings["Skin.Color.Default"]));
@@ -36,7 +36,7 @@ namespace Translate
             comboBox.ItemsSource = topics;
             comboBox.SelectedIndex = Convert.ToInt32(ConfigurationManager.AppSettings["Default"]);
 
-            tb.Text = "版本编译时间：" + DateTime.Now.ToString();
+            tb.Text = "版本编译时间：" + str;
         }
 
         MainWindow parentWindow;

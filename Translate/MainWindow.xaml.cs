@@ -22,6 +22,7 @@ namespace Translate
     public partial class MainWindow : Window
     {
         Skin skin = new Skin();//全局申明，方便SKIN_MouseDown()每次点击加载配置文件
+        public string DebugTime;
         public MainWindow()
         {
             InitializeComponent();
@@ -36,6 +37,8 @@ namespace Translate
             {
                 btn2.IsEnabled = false;
             }
+
+            DebugTime = DateTime.Now.ToString();
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -269,7 +272,7 @@ namespace Translate
 
         private void setting_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Setting setting = new Setting();
+            Setting setting = new Setting(DebugTime);
             setting.ParentWindow = this;
             setting.ShowDialog();
         }

@@ -54,8 +54,8 @@
             <TabItem Header="关于">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="31*"/>
-                        <RowDefinition Height="111*"/>
+                        <RowDefinition Height="11*"/>
+                        <RowDefinition Height="131*"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="88*"/>
@@ -66,7 +66,7 @@
                         <TextBlock Text="开发人员：JiangXinJi" Foreground="Gray"/>
                         <TextBlock Name="tb" Foreground="Gray"/>
                     </StackPanel>
-                    
+
                 </Grid>
             </TabItem>
             <TabItem Header="更新"></TabItem>
