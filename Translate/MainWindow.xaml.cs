@@ -15,7 +15,7 @@ using Tesseract;
 
 
 namespace Translate
-{ 
+{
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
     /// </summary>
@@ -58,13 +58,13 @@ namespace Translate
         private void StartOrc(string imageSource = null)
         {
             TesseractEngine engine = new TesseractEngine(@"C:\Program Files (x86)\Tesseract-OCR\tessdata\", "chi_sim", EngineMode.Default);
-                engine.SetVariable("chop_enable ", "F");
-                engine.SetVariable("enable_new_segsearch", 0);
-                engine.SetVariable("use_new_state_cost ", "F");
-                engine.SetVariable("segment_segcost_rating", "F");
-                engine.SetVariable("language_model_ngram_on", 0);
-                engine.SetVariable("textord_force_make_prop_words", "F");
-                engine.SetVariable("edges_max_children_per_outline", 50);
+            engine.SetVariable("chop_enable", "F");
+            engine.SetVariable("enable_new_segsearch", 0);
+            engine.SetVariable("use_new_state_cost", "F");
+            engine.SetVariable("segment_segcost_rating", "F");
+            engine.SetVariable("language_model_ngram_on", 0);
+            engine.SetVariable("textord_force_make_prop_words", "F");
+            engine.SetVariable("edges_max_children_per_outline", 50);
             if (imageSource == null)
             {
                 var file = new Microsoft.Win32.OpenFileDialog();
@@ -208,6 +208,7 @@ namespace Translate
 
         public void Window_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            /*
             string tootip = border1.ToolTip.ToString();
             if (tootip == "White")
             {
@@ -220,6 +221,7 @@ namespace Translate
                 border1.Background = new SolidColorBrush(System.Windows.Media.Color.FromRgb(255, 255, 255));
                 border1.ToolTip = "White";
             }
+            */
         }
 
         private void SKIN_MouseDown(object sender, MouseButtonEventArgs e)

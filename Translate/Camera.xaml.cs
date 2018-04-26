@@ -17,7 +17,7 @@ namespace Translate
         public Camera()
         {
             InitializeComponent();
-            bd.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(ConfigurationManager.AppSettings["Skin.Color.Default"]));
+            bd.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(ConfigurationManager.AppSettings["Skin.Color.Default"]));
         }
 
        

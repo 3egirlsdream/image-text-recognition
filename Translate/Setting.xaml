@@ -58,18 +58,47 @@
                         <RowDefinition Height="131*"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="88*"/>
-                        <ColumnDefinition Width="349*"/>
+                        <ColumnDefinition Width="67*"/>
+                        <ColumnDefinition Width="370*"/>
                     </Grid.ColumnDefinitions>
-                    <StackPanel Grid.Row="1" Grid.Column="1">
+                    <TextBlock Text="版本：" Grid.Row="0" Grid.Column="1" VerticalAlignment="Bottom" Foreground="Gray" Height="15"/>
+                    <StackPanel Grid.Row="1" Grid.Column="1" Margin="20,0,0,0">
                         <TextBlock Text="Translate 6.0"  FontSize="30"/>
                         <TextBlock Text="开发人员：JiangXinJi" Foreground="Gray"/>
                         <TextBlock Name="tb" Foreground="Gray"/>
+                        <TextBlock Name="OpenSource" Foreground="Gray"/>
+                        <TextBlock>
+                            <Hyperlink NavigateUri="https://github.com/jiangxinji110/Translate">
+                                https://github.com/jiangxinji110/Translate
+                            </Hyperlink>
+                        </TextBlock>
                     </StackPanel>
 
                 </Grid>
             </TabItem>
-            <TabItem Header="更新"></TabItem>
+            <TabItem Header="反馈">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40*"/>
+                        <RowDefinition Height="209*"/>
+                        <RowDefinition Height="35*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="34*"/>
+                        <ColumnDefinition Width="403*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="标题:" Grid.Column="1" VerticalAlignment="Center" Margin="0,12"/>
+                    <Border Grid.Column="1" Height="20" Width="250" Margin="40,7,0,7" HorizontalAlignment="Left" BorderBrush="Gray" BorderThickness="1" CornerRadius="3" Background="White">
+                        <TextBox Name="tb1" Background="Transparent" BorderThickness="0" Margin="0,-5,0,0"/>
+                    </Border>
+
+                    <TextBlock Text="内容:" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top"/>
+                    <Border Grid.Column="1" Grid.Row="1" Height="200" Width="250" Margin="40,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="Gray" BorderThickness="1" CornerRadius="3" Background="White">
+                        <TextBox Name="tb2" Background="Transparent" BorderThickness="0" TextWrapping="Wrap"/>
+                    </Border>
+                    <Button Name="Submit" Content="提交" Grid.Column="1" Grid.Row="2" Height="30" Width="100" Margin="-70,0,0,0" Click="Submit_Click"/>
+                </Grid>
+            </TabItem>
         </TabControl>
     </Grid>
 </Window>

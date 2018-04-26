@@ -37,6 +37,7 @@ namespace Translate
             comboBox.SelectedIndex = Convert.ToInt32(ConfigurationManager.AppSettings["Default"]);
 
             tb.Text = "版本编译时间：" + str;
+            OpenSource.Text = "本软件在Github上开源，源码地址：";
         }
 
         MainWindow parentWindow;
@@ -84,6 +85,21 @@ namespace Translate
             }
             config.Save(ConfigurationSaveMode.Modified);
             ConfigurationManager.RefreshSection("appSettings");
+        }
+
+        private void Submit_Click(object sender, RoutedEventArgs e)
+        {
+            Warning warning;
+            if (tb1.Text.Contains("我爱你") || tb2.Text.Contains("我爱你"))
+            {
+                warning = new Warning("我也爱你");
+                warning.ShowDialog();
+            }
+            else if (tb1.Text != "" && tb2.Text != "")
+            {
+                warning = new Warning("哪里来那么多问题？");
+                warning.ShowDialog();
+            }  
         }
     }
 }
