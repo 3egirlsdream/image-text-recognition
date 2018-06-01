@@ -14,7 +14,7 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>D:\MyData\jiangxj\Desktop\</PublishUrl>
+    <PublishUrl>C:\Users\xulez\Desktop\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -24,8 +24,8 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>2</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationVersion>6.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -112,6 +112,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ComboBox.cs" />
+    <Compile Include="MulLanguageBar.xaml.cs">
+      <DependentUpon>MulLanguageBar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Setting.xaml.cs">
       <DependentUpon>Setting.xaml</DependentUpon>
     </Compile>
@@ -141,6 +144,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MulLanguageBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Setting.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -194,6 +201,7 @@
     <Content Include="dll\Newtonsoft.Json.dll" />
     <Content Include="dll\WPFMediaKit.dll" />
     <Resource Include="img\setting.png" />
+    <Resource Include="img\MulLanguage.png" />
     <Content Include="x64\liblept1742.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

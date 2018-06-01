@@ -1,0 +1,23 @@
+﻿<Page x:Class="Translate.MulLanguageBar"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Translate"
+      mc:Ignorable="d" 
+      d:DesignHeight="30" d:DesignWidth="740"
+      Title="MulLanguageBar">
+
+    <Grid Name="grid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="499"/>
+            <ColumnDefinition Width="211"/>
+        </Grid.ColumnDefinitions>
+        <Button Name="jp" Content="日语" Width="67" Height="30" HorizontalAlignment="Left" BorderThickness="0" Grid.Column="1" Click="jp_Click" Margin="9,0,0,0"/>
+        <Button Name="en" Content="英语" Width="67" Height="30" BorderThickness="0"   Grid.Column="1" Click="en_Click" Margin="77,0,68,0"/>
+        <Button Name="rs" Content="俄语" Width="67" Height="30" HorizontalAlignment="Right" BorderThickness="0" Click="rs_Click" Grid.Column="1"/>
+
+        <Button Name="open" Content="打开图片★" FontFamily="幼圆" FontSize="13" Background="#119EDA" Height="30" Width="100" BorderThickness="0" HorizontalAlignment="Left" Margin="199,0,0,0" Click="open_Click"/>
+        <Button Name="btn2" Content="翻   译" FontFamily="幼圆" FontSize="13" Background="#C62F2F" Height="30" Width="100" BorderThickness="0" HorizontalAlignment="Right" Margin="0,0,0,0" Click="btn2_Click"/>
+    </Grid>
+</Page>

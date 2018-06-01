@@ -22,6 +22,8 @@ namespace Translate
     public partial class MainWindow : Window
     {
         Skin skin = new Skin();//全局申明，方便SKIN_MouseDown()每次点击加载配置文件
+        MulLanguageBar bar = new MulLanguageBar();
+        
         public string DebugTime;
         public MainWindow()
         {
@@ -31,6 +33,8 @@ namespace Translate
 
             cc.Content = new Frame() { Content = skin };
             skin.ParentWindow = this;//绑定Page的父窗口
+            bar.ParentWindow = this;
+            
 
             cc.Visibility = Visibility.Collapsed;
             if (tb1.Text.Equals(""))//文本框内容为空时，翻译按钮设为不可用
@@ -135,10 +139,13 @@ namespace Translate
             StreamReader reader = new StreamReader(stream, encode);
             return reader.ReadToEnd();
         }
+        //override
+      
 
         private void btn1_Click(object sender, RoutedEventArgs e)
         {
             StartOrc();
+            japan.Header = "日语";
         }
 
         private void btn2_Click(object sender, RoutedEventArgs e)
@@ -190,20 +197,21 @@ namespace Translate
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             /*试用功能*/
-            /*
+/*
             DateTime CurrentDate = new DateTime();
             CurrentDate = DateTime.Now;
             int year = CurrentDate.Year;
             int month = CurrentDate.Month;
             int day = CurrentDate.Day;
             //MessageBox.Show(day.ToString());
-            if(year > 2018 || month > 4 || day > 11)
+            if (year > 2018 || month > 5 || day > 5)
             {
                 Warning warning = new Warning("试用结束！");
                 warning.ShowDialog();
                 this.Close();
             }
             */
+
         }
 
         public void Window_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -277,6 +285,12 @@ namespace Translate
             Setting setting = new Setting(DebugTime);
             setting.ParentWindow = this;
             setting.ShowDialog();
+        }
+
+        private void MulLanguageBtnClick(object sender, MouseButtonEventArgs e)
+        {
+            btn1.IsEnabled = false;
+            MulLanguageModule.Content = new Frame() { Content = bar };
         }
     }
 }
