@@ -48,6 +48,13 @@ namespace Translate
         {
             System.Configuration.Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
             config.AppSettings.Settings["Skin.Color.Default"].Value = str;
+            switch (str)
+            {
+                case "#FFFFFF": config.AppSettings.Settings["Default"].Value = "0"; break;
+                case "#2D2D30": config.AppSettings.Settings["Default"].Value = "1"; break;
+                case "#3A5DD9": config.AppSettings.Settings["Default"].Value = "2"; break;
+                case "#C62F2F": config.AppSettings.Settings["Default"].Value = "3"; break;
+            }
             config.Save(ConfigurationSaveMode.Modified);
             ConfigurationManager.RefreshSection("appSettings");
         }
