@@ -1,14 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Translate", "Translate\Translate.csproj", "{3F4BF74E-CC5C-42F1-ABBC-602E79A088E9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xu.Common", "..\XuTooKit\Xu.Common\Xu.Common.csproj", "{12F7624E-2161-4FAA-8E3C-BB50006F0B7E}"
+EndProject
 Global
-	GlobalSection(Performance) = preSolution
-		HasPerformanceSessions = true
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -18,11 +17,18 @@ Global
 		{3F4BF74E-CC5C-42F1-ABBC-602E79A088E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F4BF74E-CC5C-42F1-ABBC-602E79A088E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F4BF74E-CC5C-42F1-ABBC-602E79A088E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12F7624E-2161-4FAA-8E3C-BB50006F0B7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12F7624E-2161-4FAA-8E3C-BB50006F0B7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12F7624E-2161-4FAA-8E3C-BB50006F0B7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12F7624E-2161-4FAA-8E3C-BB50006F0B7E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {838E9668-5F92-429C-B3DC-B5F5B318172B}
+	EndGlobalSection
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
 	EndGlobalSection
 EndGlobal

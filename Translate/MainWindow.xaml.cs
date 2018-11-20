@@ -12,7 +12,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using Tesseract;
-
+using Xu.Common;
 
 namespace Translate
 {
@@ -197,7 +197,7 @@ namespace Translate
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             /*试用功能*/
-/*
+
             DateTime CurrentDate = new DateTime();
             CurrentDate = DateTime.Now;
             int year = CurrentDate.Year;
@@ -210,7 +210,7 @@ namespace Translate
                 warning.ShowDialog();
                 this.Close();
             }
-            */
+            
 
         }
 

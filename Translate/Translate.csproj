@@ -50,7 +50,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>logo.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>B25AC7D518E7DC1E48D32CB59E7C63B5FF1A7C9E</ManifestCertificateThumbprint>
@@ -105,13 +106,16 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>dll\WPFMediaKit.dll</HintPath>
     </Reference>
+    <Reference Include="Xu.Common">
+      <HintPath>..\..\XuTooKit\GeraralSql\ReferenceDll\Xu.Common.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ComboBox.cs" />
+    <Compile Include="models\ComboBox.cs" />
     <Compile Include="MulLanguageBar.xaml.cs">
       <DependentUpon>MulLanguageBar.xaml</DependentUpon>
     </Compile>
@@ -120,9 +124,6 @@
     </Compile>
     <Compile Include="Skin.xaml.cs">
       <DependentUpon>Skin.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Warning.xaml.cs">
-      <DependentUpon>Warning.xaml</DependentUpon>
     </Compile>
     <Page Include="Camera.xaml">
       <SubType>Designer</SubType>
@@ -139,7 +140,7 @@
     <Compile Include="Camera.xaml.cs">
       <DependentUpon>Camera.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Json.cs" />
+    <Compile Include="models\Json.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -157,10 +158,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserDefinedStyle.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Warning.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -193,10 +190,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="开发日志.txt" />
+    <Resource Include="models\开发日志.txt" />
     <Resource Include="img\logo.ico" />
     <Resource Include="img\camera.png" />
-    <Resource Include="logo.ico" />
     <Resource Include="img\skin.png" />
     <Content Include="dll\Newtonsoft.Json.dll" />
     <Content Include="dll\WPFMediaKit.dll" />
@@ -209,9 +205,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="x86\liblept1742.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="x86\libtesseract3051.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
