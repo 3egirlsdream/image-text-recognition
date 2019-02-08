@@ -8,3 +8,4 @@ function:</br>
 4.Off course,you can do it in Setting model too.</br>
 5.And in Setting model,you can submit your suggestion to me.</br>
 6.Thx your cooperation.</br>
+7.Unzip the file in folder named config to "C:\Program Files (x86)".(the most important, otherwise software can not run)</br>
