@@ -1,18 +1,20 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
+using System.Web;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using Tesseract;
-using Xu.Common;
 
 namespace Translate
 {
@@ -61,42 +63,44 @@ namespace Translate
         string pathname = null;
         private void StartOrc(string imageSource = null)
         {
-            TesseractEngine engine = new TesseractEngine(@"C:\Program Files (x86)\Tesseract-OCR\tessdata\", "chi_sim", EngineMode.Default);
-            engine.SetVariable("chop_enable", "F");
-            engine.SetVariable("enable_new_segsearch", 0);
-            engine.SetVariable("use_new_state_cost", "F");
-            engine.SetVariable("segment_segcost_rating", "F");
-            engine.SetVariable("language_model_ngram_on", 0);
-            engine.SetVariable("textord_force_make_prop_words", "F");
-            engine.SetVariable("edges_max_children_per_outline", 50);
-            if (imageSource == null)
+            try
             {
-                var file = new Microsoft.Win32.OpenFileDialog();
-                file.Filter = "所有文件(*.*)|*.*";
-                var image = file.ShowDialog();
-
-                if (file.FileName != string.Empty)
+                TesseractEngine engine = new TesseractEngine(@"C:\Program Files (x86)\Tesseract-OCR\tessdata\", "chi_sim", EngineMode.Default);
+                engine.SetVariable("chop_enable", "F");
+                engine.SetVariable("enable_new_segsearch", 0);
+                engine.SetVariable("use_new_state_cost", "F");
+                engine.SetVariable("segment_segcost_rating", "F");
+                engine.SetVariable("language_model_ngram_on", 0);
+                engine.SetVariable("textord_force_make_prop_words", "F");
+                engine.SetVariable("edges_max_children_per_outline", 50);
+                if (imageSource == null)
                 {
-                    try
+                    var file = new Microsoft.Win32.OpenFileDialog();
+                    file.Filter = "所有文件(*.*)|*.*";
+                    var image = file.ShowDialog();
+
+                    if (file.FileName != string.Empty)
                     {
-                        pathname = file.FileName;   //获得文件的绝对路径
-                                                    //MessageBox.Show(pathname);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
+                        try
+                        {
+                            pathname = file.FileName;   //获得文件的绝对路径
+                                                        //MessageBox.Show(pathname);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
                     }
                 }
-            }
-            else
-            {
-                //获取当前电脑桌面路径
-                string dir = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-                pathname = dir + @"\photo.jpg";
-                //MessageBox.Show(pathname);
-            }
+                else
+                {
+                    //获取当前电脑桌面路径
+                    string dir = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+                    pathname = dir + @"\photo.jpg";
+                    //MessageBox.Show(pathname);
+                }
 
-            if (pathname != null)//文件的绝对路径不为空时
+                if (pathname != null)//文件的绝对路径不为空时
                 {
                     System.Drawing.Image img = System.Drawing.Image.FromFile(pathname);
                     Bitmap p = (Bitmap)img;
@@ -110,7 +114,100 @@ namespace Translate
                         btn2.IsEnabled = true;
                     }
                 }
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
            
+        }
+
+        public string ConvertToBase64()
+        {
+            try
+            {
+                var file = new Microsoft.Win32.OpenFileDialog
+                {
+                    Filter = "所有文件(*.*)|*.*"
+                };
+                file.ShowDialog();
+
+                if (file.FileName != string.Empty)
+                {
+                    try
+                    {
+                        pathname = file.FileName;   //获得文件的绝对路径
+                                                    //MessageBox.Show(pathname);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+                if (pathname != null)
+                {
+                    System.Drawing.Image img = System.Drawing.Image.FromFile(pathname);
+                    Bitmap bmp = new Bitmap(pathname);
+                    MemoryStream ms = new MemoryStream();
+                    bmp.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    byte[] arr = ms.GetBuffer();
+                    //ms.Position = 0;
+                    //ms.Read(arr, 0, (int)ms.Length);
+                    //ms.Close();
+                    string baser64 = Convert.ToBase64String(arr);
+                    return /*@"data:image/jpeg;base64," + */baser64;
+
+                }
+                else return "";
+            }
+           catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        private void OcrApi(string base64)
+        {
+            string appKey = "aQfF058TU2uGRNbgDGn4AzPd";
+            string secretKey = "GV7G2pYTaXMgK2KyeEBknsrGjVE5GpSY";
+            string Url = "https://aip.baidubce.com/oauth/2.0/token";
+
+            HttpClient client = new HttpClient();
+            List<KeyValuePair<string, string>> keys = new List<KeyValuePair<string, string>>();
+            keys.Add(new KeyValuePair<string, string>("grant_type", "client_credentials"));
+            keys.Add(new KeyValuePair<string, string>("client_id", appKey));
+            keys.Add(new KeyValuePair<string, string>("client_secret", secretKey));
+
+            HttpResponseMessage message = client.PostAsync(Url, new FormUrlEncodedContent(keys)).Result;
+            string result = message.Content.ReadAsStringAsync().Result;
+            dynamic model = JsonConvert.DeserializeObject<dynamic>(result);
+            string access_token = "24.a8e6f897dfe53ff4be44d55c0431a336.2592000.1552205721.282335-15536524";// model.access_token as string;
+           
+            //以上是获取token
+
+            ///图像数据，base64编码进行urlencode
+            ///是否检测图像朝向
+            string api = "https://aip.baidubce.com/rest/2.0/ocr/v1/general?access_token=" + access_token;
+            Encoding encoding = Encoding.Default;
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(api);
+            request.Method = "post";
+            request.ContentType = "application/x-www-form-urlencoded";
+            request.KeepAlive = true;
+            String str = "image=" + HttpUtility.UrlEncode(base64) + "&language_type=CHN_ENG";
+            byte[] buffer = encoding.GetBytes(str);
+            request.ContentLength = buffer.Length;
+            request.GetRequestStream().Write(buffer, 0, buffer.Length);
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.UTF8);
+            string res = reader.ReadToEnd();
+            var d = JsonConvert.DeserializeObject<models.Root>(res);
+            
+            string s = "";
+            foreach (var ds in d.words_result)
+            {
+                s += ds.words as string + "\r\n";
+            }
+            tb1.Text = s;
         }
 
         private string GetJson(string language)
@@ -144,7 +241,7 @@ namespace Translate
 
         private void btn1_Click(object sender, RoutedEventArgs e)
         {
-            StartOrc();
+            OcrApi(ConvertToBase64());
             japan.Header = "日语";
         }
 
@@ -198,18 +295,18 @@ namespace Translate
         {
             /*试用功能*/
 
-            DateTime CurrentDate = new DateTime();
-            CurrentDate = DateTime.Now;
-            int year = CurrentDate.Year;
-            int month = CurrentDate.Month;
-            int day = CurrentDate.Day;
-            //MessageBox.Show(day.ToString());
-            if (year > 2018 || month > 5 || day > 5)
-            {
-                Warning warning = new Warning("试用结束！");
-                warning.ShowDialog();
-                this.Close();
-            }
+            //DateTime CurrentDate = new DateTime();
+            //CurrentDate = DateTime.Now;
+            //int year = CurrentDate.Year;
+            //int month = CurrentDate.Month;
+            //int day = CurrentDate.Day;
+            ////MessageBox.Show(day.ToString());
+            //if (year > 2018 || month > 5 || day > 5)
+            //{
+            //    Warning warning = new Warning("试用结束！");
+            //    warning.ShowDialog();
+            //    this.Close();
+            //}
             
 
         }

@@ -106,8 +106,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>dll\WPFMediaKit.dll</HintPath>
     </Reference>
-    <Reference Include="Xu.Common">
-      <HintPath>..\..\XuTooKit\GeraralSql\ReferenceDll\Xu.Common.dll</HintPath>
+    <Reference Include="Xu.Common, Version=1.0.6978.26768, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\Xu.Common.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -116,6 +117,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="models\ComboBox.cs" />
+    <Compile Include="models\model.cs" />
     <Compile Include="MulLanguageBar.xaml.cs">
       <DependentUpon>MulLanguageBar.xaml</DependentUpon>
     </Compile>
@@ -199,6 +201,7 @@
     <Content Include="dll\WPFMediaKit.dll" />
     <Resource Include="img\setting.png" />
     <Resource Include="img\MulLanguage.png" />
+    <Content Include="dll\Xu.Common.dll" />
     <Content Include="x64\liblept1742.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
