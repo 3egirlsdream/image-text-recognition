@@ -168,8 +168,8 @@ namespace Translate
 
         private void OcrApi(string base64)
         {
-            string appKey = "aQfF058TU2uGRNbgDGn4AzPd";
-            string secretKey = "GV7G2pYTaXMgK2KyeEBknsrGjVE5GpSY";
+            string appKey = "9kx6kxwXaA7dCqUEDsNGMizA";
+            string secretKey = "jPMqQfHFh6XoHvoW7t1Ry9PHGOsx4S90";
             string Url = "https://aip.baidubce.com/oauth/2.0/token";
 
             HttpClient client = new HttpClient();
@@ -181,7 +181,7 @@ namespace Translate
             HttpResponseMessage message = client.PostAsync(Url, new FormUrlEncodedContent(keys)).Result;
             string result = message.Content.ReadAsStringAsync().Result;
             dynamic model = JsonConvert.DeserializeObject<dynamic>(result);
-            string access_token = "24.a8e6f897dfe53ff4be44d55c0431a336.2592000.1552205721.282335-15536524";// model.access_token as string;
+            string access_token = "24.15877ce69fbfcbb481b82f7b504e10eb.2592000.1557745923.282335-16011829";// model.access_token as string;
            
             //以上是获取token
 
